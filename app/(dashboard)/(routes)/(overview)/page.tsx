@@ -1,7 +1,8 @@
+import { UserButton } from "@clerk/nextjs";
 import React from "react";
 
-const Dashboard = () => {
+const Overview = () => {
   return <div>Dashboard</div>;
 };
 
-export default Dashboard;
+export default Overview;
