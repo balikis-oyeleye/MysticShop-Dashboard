@@ -52,9 +52,10 @@ module.exports = {
         },
         gray: "#50514F",
         pale: "#CBD4C2",
-        grayT: "#E5E8E1",
+        grayFade: "#E5E8E1",
         blue: "#247ba0",
         rose: "#c3b299",
+        white: "#fffcff",
       },
       borderRadius: {
         lg: "var(--radius)",
