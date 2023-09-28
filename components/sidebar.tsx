@@ -6,9 +6,11 @@ import {
   ShoppingBag,
   Boxes,
   LogOut,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { SignOutButton } from "@clerk/nextjs";
+import { SidebarProps } from "@/types/general";
 
 const routes = [
   { label: "Overview", icon: LayoutGrid, to: "/" },
@@ -17,22 +19,28 @@ const routes = [
   { label: "Transactions", icon: Boxes, to: "/transactions" },
 ];
 
-interface SidebarProps {
-  openSidebar: boolean;
-}
+const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
+  const toggleMenu = () => {
+    setOpenSidebar((prev) => (prev = false));
+  };
 
-const Sidebar = ({ openSidebar }: SidebarProps) => {
   return (
     <div className="px-4 py-5 w-full relative h-full overflow-hidden">
-      <Link href="/" className="flex items-center gap-2 cursor-pointer mb-10">
-        <Gem className="w-8 text-white" />
-        <h1
-          className={`text-2xl text-white 
+      <div className="flex items-center justify-between mb-12">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
+          <Gem className="w-8 text-white" />
+          <h1
+            className={`text-2xl text-white 
           md:block font-bold ${openSidebar ? "block" : "hidden"}`}
-        >
-          MysticShop
-        </h1>
-      </Link>
+          >
+            MysticShop
+          </h1>
+        </Link>
+        <X
+          className="text-white cursor-pointer md:hidden"
+          onClick={toggleMenu}
+        />
+      </div>
       <div className="flex flex-col gap-y-6">
         {routes.map((route) => (
           <Link
