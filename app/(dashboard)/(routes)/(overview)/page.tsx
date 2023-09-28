@@ -15,7 +15,7 @@ const revenues = [
 
 const Overview = () => {
   return (
-    <main className="flex md:block flex-col items-center justify-center md:pl-6 pt-6 space-y-12">
+    <main className="flex md:block flex-col items-center justify-center md:pl-6 mt-6 space-y-12">
       <div>
         <h3 className="font-bold mb-4">Orders</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4">
