@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { SignOutButton } from "@clerk/nextjs";
 import { SidebarProps } from "@/types/general";
+import { usePathname } from "next/navigation";
 
 const routes = [
   { label: "Overview", icon: LayoutGrid, to: "/" },
@@ -20,6 +21,12 @@ const routes = [
 ];
 
 const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
+  const pathname = usePathname();
+
+  const isPath = (routeName: string) => {
+    if (pathname === routeName) return true;
+  };
+
   const toggleMenu = () => {
     setOpenSidebar((prev) => (prev = false));
   };
@@ -46,7 +53,9 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
           <Link
             href={route.to}
             key={route.label}
-            className="flex gap-4 items-center text-white"
+            className={`flex gap-4 items-center text-white hover:bg-pale/60 py-2 px-1 rounded ${
+              isPath(route.to) ? "bg-pale/60" : ""
+            }`}
           >
             <route.icon className="w-6" />
             <span
