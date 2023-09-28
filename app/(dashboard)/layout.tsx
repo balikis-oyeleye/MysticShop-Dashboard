@@ -12,12 +12,12 @@ const DashboardLayout = ({ children }: LayoutProps) => {
     <div className="h-full relative">
       <aside
         className={`h-full fixed inset-y-0 z-[80] bg-gray md:w-72 transition-all duration-300 ${
-          openSidebar ? "w-72" : "w-14"
+          openSidebar ? "w-72" : "w-16"
         }`}
       >
         <Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
       </aside>
-      <main className="md:pl-72 pl-14  h-full w-full bg-grayFade">
+      <main className="md:pl-72 pl-14  min-h-full w-full bg-grayFade">
         <Navbar setOpenSidebar={setOpenSidebar} />
         {children}
       </main>
