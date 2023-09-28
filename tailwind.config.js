@@ -56,6 +56,7 @@ module.exports = {
         blue: "#247ba0",
         rose: "#c3b299",
         white: "#fffcff",
+        blueHoover: "#174f66",
       },
       borderRadius: {
         lg: "var(--radius)",
