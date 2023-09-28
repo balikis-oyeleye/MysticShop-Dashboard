@@ -20,7 +20,11 @@ const Overview = () => {
         <h3 className="font-bold mb-4">Orders</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4">
           {orders.map((order) => (
-            <Box period={order.period} orders={order.orders} />
+            <Box
+              period={order.period}
+              orders={order.orders}
+              key={order.period}
+            />
           ))}
         </div>
       </div>
@@ -28,7 +32,11 @@ const Overview = () => {
         <h3 className="font-bold mb-4">Revenue</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4">
           {revenues.map((revenue) => (
-            <Box period={revenue.period} amount={revenue.amount} />
+            <Box
+              period={revenue.period}
+              amount={revenue.amount}
+              key={revenue.period}
+            />
           ))}
         </div>
       </div>
