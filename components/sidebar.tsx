@@ -32,7 +32,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
   };
 
   return (
-    <div className="px-4 py-5 w-full relative h-full overflow-hidden">
+    <div className="px-4 py-5 w-full relative h-full overflow-hidden flex flex-col">
       <div className="flex items-center justify-between mb-12">
         <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <Gem className="w-8 text-white" />
@@ -68,7 +68,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
         ))}
       </div>
       <SignOutButton>
-        <div className="flex items-center absolute bottom-0 gap-4 text-white mb-20 cursor-pointer">
+        <div className="flex items-center  gap-4 text-white mb-20 mt-32 cursor-pointer px-1 ">
           <LogOut className="w-6" />
           <span
             className={`font-medium text-md md:block ${
