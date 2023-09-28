@@ -1,3 +1,5 @@
+"use client";
+
 import { SidebarProps } from "@/types/general";
 import { UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
