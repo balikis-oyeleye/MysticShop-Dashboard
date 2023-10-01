@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const Navbar = ({ setOpenSidebar }: SidebarProps) => {
   const pathname = usePathname();
 
-  const toggleMenu = () => {
+  const openMenu = () => {
     setOpenSidebar((prev) => (prev = true));
   };
 
@@ -19,7 +19,7 @@ const Navbar = ({ setOpenSidebar }: SidebarProps) => {
 
   return (
     <nav className="flex items-center justify-between bg-white px-3 md:px-6 py-4 shadow-md">
-      <Menu className="md:hidden block cursor-pointer" onClick={toggleMenu} />
+      <Menu className="md:hidden block cursor-pointer" onClick={openMenu} />
       <div>
         <h1 className="font-bold text-2xl capitalize">{title()}</h1>
       </div>

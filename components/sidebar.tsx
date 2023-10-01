@@ -27,7 +27,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
     if (pathname === routeName) return true;
   };
 
-  const toggleMenu = () => {
+  const closeMenu = () => {
     setOpenSidebar((prev) => (prev = false));
   };
 
@@ -45,7 +45,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
         </Link>
         <X
           className="text-white cursor-pointer md:hidden"
-          onClick={toggleMenu}
+          onClick={closeMenu}
         />
       </div>
       <div className="flex flex-col gap-y-6">
@@ -56,6 +56,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
             className={`flex gap-4 items-center text-white hover:bg-pale/60 py-2 px-1 rounded ${
               isPath(route.to) ? "bg-pale/60" : ""
             }`}
+            onClick={closeMenu}
           >
             <route.icon className="w-6" />
             <span
