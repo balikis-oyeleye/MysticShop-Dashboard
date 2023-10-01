@@ -36,3 +36,11 @@ export type OrderProps = {
 export type OrdersProps = {
   order: OrderProps[];
 };
+
+export type TransactionProps = {
+  time: string;
+  date: string;
+  id: number;
+  detail: string;
+  amount: number;
+};

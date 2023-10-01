@@ -1,12 +1,14 @@
 "use client";
 
 import { SidebarProps } from "@/types/general";
-import { UserButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const Navbar = ({ setOpenSidebar }: SidebarProps) => {
   const pathname = usePathname();
+  const { user } = useUser();
 
   const openMenu = () => {
     setOpenSidebar((prev) => (prev = true));
@@ -24,7 +26,13 @@ const Navbar = ({ setOpenSidebar }: SidebarProps) => {
         <h1 className="font-bold text-2xl capitalize">{title()}</h1>
       </div>
 
-      <UserButton />
+      <Avatar className="cursor-pointer">
+        <AvatarImage src={user?.imageUrl} />
+        <AvatarFallback>
+          {user?.firstName?.charAt(0)}
+          {user?.lastName?.charAt(0)}
+        </AvatarFallback>
+      </Avatar>
     </nav>
   );
 };

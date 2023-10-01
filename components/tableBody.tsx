@@ -1,10 +1,11 @@
-import { OrderProps, ProductProps } from "@/types/general";
+import { OrderProps, ProductProps, TransactionProps } from "@/types/general";
 import { Pencil, Trash2 } from "lucide-react";
 import Image from "next/image";
 
 interface TableBodyProps {
   products?: ProductProps[];
   orders?: OrderProps[];
+  transactions?: TransactionProps[];
 }
 
 const colors = {
@@ -14,7 +15,7 @@ const colors = {
   canceled: "text-red-600",
 };
 
-const TableBody = ({ products, orders }: TableBodyProps) => {
+const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
   return (
     <tbody>
       {products ? (
@@ -50,7 +51,7 @@ const TableBody = ({ products, orders }: TableBodyProps) => {
             </tr>
           ))}
         </>
-      ) : (
+      ) : orders ? (
         <>
           {orders?.map((order, index) => (
             <tr className="border-b border-gray/50" key={order.orderId}>
@@ -70,6 +71,28 @@ const TableBody = ({ products, orders }: TableBodyProps) => {
               <td>{order.amount}</td>
               <td className={`${colors[order.status as keyof typeof colors]}`}>
                 {order.status}
+              </td>
+            </tr>
+          ))}
+        </>
+      ) : (
+        <>
+          {transactions?.map((transaction, index) => (
+            <tr className="border-b border-gray/50" key={transaction.id}>
+              <td className="whitespace-nowrap px-4 py-4 text-center">
+                {transaction.time}
+              </td>
+              <td className="whitespace-nowrap px-4 py-4 text-center">
+                {transaction.date}
+              </td>
+              <td className="whitespace-nowrap px-4 py-4 text-center">
+                {transaction.id}
+              </td>
+              <td className="whitespace-nowrap px-4 py-4 text-center">
+                {transaction.detail}
+              </td>
+              <td className="whitespace-nowrap px-4 py-4 text-center">
+                {transaction.amount}
               </td>
             </tr>
           ))}

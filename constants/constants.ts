@@ -35,3 +35,11 @@ export const productHeadings = [
   "Status",
   "Actions",
 ];
+
+export const transactionHeadings = [
+  "Transaction Time",
+  "Transaction Date",
+  "Transaction ID",
+  "Transaction Detail",
+  "Amount",
+];
