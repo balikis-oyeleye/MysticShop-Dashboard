@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.24.1",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.279.0",
     "next": "latest",
+    "prisma": "^5.3.1",
     "query-string": "^8.1.0",
     "react": "latest",
     "react-dom": "latest",
