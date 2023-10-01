@@ -3,10 +3,24 @@
 import { LayoutProps } from "@/types/general";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const DashboardLayout = ({ children }: LayoutProps) => {
   const [openSidebar, setOpenSidebar] = useState(false);
+
+  useEffect(() => {
+    const closeSidebar = () => {
+      if (window.innerWidth >= 650) {
+        setOpenSidebar((prev) => (prev = false));
+      }
+    };
+
+    window.addEventListener("resize", closeSidebar);
+
+    return () => {
+      window.removeEventListener("resize", closeSidebar);
+    };
+  }, [openSidebar, window.innerWidth]);
 
   return (
     <div className="h-full relative">
