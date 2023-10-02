@@ -94,3 +94,7 @@ body,
 .cl-internal-1fsg6zy:hover {
   background: #174f66;
 }
+
+.error {
+  color: red;
+}
