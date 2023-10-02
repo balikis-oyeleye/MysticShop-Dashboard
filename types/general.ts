@@ -1,4 +1,6 @@
+import { FormSchemaType } from "@/constants/zodSchema";
 import React from "react";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -43,4 +45,20 @@ export type TransactionProps = {
   id: number;
   detail: string;
   amount: number;
+};
+
+export type InputProps = {
+  register: UseFormRegister<FormSchemaType>;
+  primaryButton?: string | undefined;
+  secondaryButton: string;
+  primaryButtonAction?: () => void;
+  secondaryButtonAction: () => void;
+  errors: FieldErrors<FormSchemaType>;
+  close: () => void;
+};
+
+export type ProductModalStore = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 };

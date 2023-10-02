@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Inter({ subsets: ["latin"], weight: "400" });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--inter-font",
+});
 
 export const metadata: Metadata = {
   title: "MysticShop dashboard",
@@ -18,7 +22,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={`${inter.className} ${inter.variable}`}>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

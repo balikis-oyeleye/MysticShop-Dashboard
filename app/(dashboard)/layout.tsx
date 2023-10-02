@@ -3,7 +3,8 @@
 import { LayoutProps } from "@/types/general";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import AddProductModal from "@/components/modals/addProductModal";
 
 const DashboardLayout = ({ children }: LayoutProps) => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -21,6 +22,7 @@ const DashboardLayout = ({ children }: LayoutProps) => {
         <Navbar setOpenSidebar={setOpenSidebar} />
         {children}
       </main>
+      <AddProductModal />
     </div>
   );
 };

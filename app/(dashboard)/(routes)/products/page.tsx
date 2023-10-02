@@ -5,6 +5,7 @@ import TableBody from "@/components/tableBody";
 import TableHead from "@/components/tableHead";
 import { Button } from "@/components/ui/button";
 import { productHeadings, productsFilters } from "@/constants/constants";
+import useProductModal from "@/hooks/useProductModal";
 
 const products = [
   {
@@ -100,6 +101,8 @@ const products = [
 ];
 
 const Products = () => {
+  const openModal = useProductModal((state) => state.onOpen);
+
   return (
     <main className="mt-6 pb-6 mx-6 overflow-x-auto">
       <div className="flex justify-between gap-7">
@@ -113,7 +116,10 @@ const Products = () => {
             />
           ))}
         </div>
-        <Button className="bg-blue hover:bg-blueHoover text-white text-sm">
+        <Button
+          onClick={openModal}
+          className="bg-blue hover:bg-blueHoover text-white text-sm"
+        >
           Add Product
         </Button>
       </div>
