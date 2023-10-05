@@ -103,9 +103,6 @@ const Orders = () => {
             />
           ))}
         </div>
-        <Button className="bg-blue hover:bg-blueHoover text-white text-sm">
-          Add Product
-        </Button>
       </div>
 
       <table className="mt-16 mb-6 min-w-full text-center text-sm font-light">
