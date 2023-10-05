@@ -6,6 +6,7 @@ import TableHead from "@/components/tableHead";
 import { Button } from "@/components/ui/button";
 import { productHeadings, productsFilters } from "@/constants/constants";
 import useProductModal from "@/hooks/useProductModal";
+import { useAuth } from "@clerk/nextjs";
 
 const products = [
   {

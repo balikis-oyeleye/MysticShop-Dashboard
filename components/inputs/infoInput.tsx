@@ -27,10 +27,10 @@ const InfoInput = ({
             className="border-blue border rounded-sm px-2 py-1"
             type="text"
             placeholder="Enter Product Name"
-            {...register("productName")}
+            {...register("name")}
           />
-          {errors.productName && (
-            <small className="error">{errors.productName.message}</small>
+          {errors.name && (
+            <small className="error">{errors.name.message}</small>
           )}
         </label>
 

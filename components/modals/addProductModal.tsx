@@ -6,6 +6,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FormSchemaType, formSchema } from "@/constants/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useProductModal from "@/hooks/useProductModal";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 enum STEP {
   INFO,
@@ -17,6 +20,8 @@ const AddProductModal = () => {
   const [step, setStep] = useState(STEP.INFO);
   const isOpen = useProductModal((state) => state.isOpen);
   const closeModal = useProductModal((state) => state.onClose);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -72,7 +77,22 @@ const AddProductModal = () => {
     if (step != STEP.IMAGE) {
       return setStep((value) => value + 1);
     }
-    console.log(data);
+    setIsLoading(true);
+    console.log("sssss");
+
+    axios
+      .post("/api/products", data)
+      .then(() => {
+        toast.success("Listing created!");
+        router.refresh();
+        close();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
