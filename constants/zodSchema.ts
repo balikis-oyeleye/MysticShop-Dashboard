@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const formSchema = z.object({
-  productName: z
+  name: z
     .string()
     .min(3, "Product name must have more than 3 letters")
     .optional(),
