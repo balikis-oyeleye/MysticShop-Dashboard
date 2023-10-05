@@ -14,7 +14,6 @@ export const ordersHeadings = [
   "Address",
   "Date",
   "Amount",
-  "Status",
 ];
 
 export const productsFilters = [

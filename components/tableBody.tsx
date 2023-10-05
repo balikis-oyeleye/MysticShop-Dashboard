@@ -8,13 +8,6 @@ interface TableBodyProps {
   transactions?: TransactionProps[];
 }
 
-const colors = {
-  pending: "text-orange-600",
-  completed: "text-green-600",
-  shipped: "text-purple-600",
-  canceled: "text-red-600",
-};
-
 const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
   return (
     <tbody>
@@ -69,9 +62,6 @@ const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
               <td className="whitespace-nowrap px-4">{order.address}</td>
               <td>{order.date}</td>
               <td>{order.amount}</td>
-              <td className={`${colors[order.status as keyof typeof colors]}`}>
-                {order.status}
-              </td>
             </tr>
           ))}
         </>

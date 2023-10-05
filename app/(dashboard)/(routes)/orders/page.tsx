@@ -13,7 +13,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "pending",
     date: "09/08/2023",
   },
   {
@@ -22,7 +21,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "canceled",
     date: "09/08/2023",
   },
   {
@@ -31,7 +29,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "pending",
     date: "09/08/2023",
   },
   {
@@ -40,7 +37,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "completed",
     date: "09/08/2023",
   },
   {
@@ -49,7 +45,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "pending",
     date: "09/08/2023",
   },
   {
@@ -58,7 +53,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "completed",
     date: "09/08/2023",
   },
   {
@@ -67,7 +61,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "shipped",
     date: "09/08/2023",
   },
   {
@@ -76,7 +69,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "shipped",
     date: "09/08/2023",
   },
   {
@@ -85,7 +77,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "shipped",
     date: "09/08/2023",
   },
   {
@@ -94,7 +85,6 @@ const orders = [
     name: "Wall Mirror",
     address: "60, Adeyomi street ilupeju, Lagos",
     amount: 180000,
-    status: "shipped",
     date: "09/08/2023",
   },
 ];

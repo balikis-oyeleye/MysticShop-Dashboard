@@ -32,7 +32,6 @@ export type OrderProps = {
   address: string;
   date: string;
   amount: number;
-  status: string;
 };
 
 export type OrdersProps = {
