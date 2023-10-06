@@ -34,30 +34,13 @@ const AddProductModal = () => {
     resolver: zodResolver(formSchema),
   });
 
+  const image = watch("image");
+
   const close = () => {
     reset();
     closeModal();
     setStep(STEP.INFO);
   };
-
-  // const productName = watch("productName");
-  // const category = watch("category");
-  // const company = watch("company");
-  // const description = watch("description");
-  // const image = watch("image");
-  // const price = watch("price");
-  // const quantity = watch("quantity");
-  // const status = watch("status");
-
-  // console.log({
-  //   productName,
-  //   company,
-  //   category,
-  //   description,
-  //   price,
-  //   quantity,
-  //   status,
-  // });
 
   const primaryButton = () => {
     if (step === STEP.INFO) return undefined;
@@ -73,12 +56,18 @@ const AddProductModal = () => {
     setStep((value) => value - 1);
   };
 
+  const setCustomValue = (value: any) => {
+    setValue("image", value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
+
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
     if (step != STEP.IMAGE) {
       return setStep((value) => value + 1);
     }
-    setIsLoading(true);
-    console.log("sssss");
 
     axios
       .post("/api/products", data)
@@ -130,6 +119,8 @@ const AddProductModal = () => {
           primaryButtonAction={onPrev}
           errors={errors}
           close={close}
+          onChange={(value) => setCustomValue(value)}
+          value={image}
         />
       )}
     </div>

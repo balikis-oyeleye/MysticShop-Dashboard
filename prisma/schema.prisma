@@ -10,32 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Define the Seller model
-model Seller {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  username  String?
-  email     String?  @unique
-  password  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  products    Product[]
-  orders      Order[]
-  transaction Transaction[]
-}
-
-model Customer {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  username  String?
-  email     String?  @unique
-  password  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  orders   Order[]
-  wishlist Wishlist[]
-}
-
 // Define the Product model
 model Product {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
@@ -46,36 +20,46 @@ model Product {
   quantity    Int
   status      String
   imageUrl    String
-  sellerId    String @db.ObjectId
-  seller      Seller @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId    String
+
+  order    Order[]
+  wishlist Wishlist[]
+  Cart     Cart[]
 }
 
 // Define the Order model
 model Order {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   orderDate   DateTime
   totalAmount Float
   status      String
   address     String
-  sellerId    String    @db.ObjectId
-  seller      Seller    @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-  Customer    Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  customerId  String?   @db.ObjectId
+  sellerId    String
+  productId   String?  @db.ObjectId
+  Product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  productId  String  @db.ObjectId
+  Product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  customerId String
+
+  @@index([productId])
 }
 
 // Define the Transaction model
 model Transaction {
-  id     String   @id @default(auto()) @map("_id") @db.ObjectId
-  amount Float
-  date   DateTime
-
-  seller   Seller @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-  sellerId String @db.ObjectId
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount   Float
+  date     DateTime
+  sellerId String
 }
 
 model Wishlist {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String
-  customerId String   @db.ObjectId
-  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String
+  productId  String?  @db.ObjectId
+  Product    Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

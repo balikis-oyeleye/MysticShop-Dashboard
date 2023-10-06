@@ -1,7 +1,6 @@
 import { useAuth } from "@clerk/nextjs";
 
-export default async function getCurrentUser() {
-  return {
-    p: "p",
-  };
+export default async function getSeller() {
+  const { userId } = useAuth();
+  return userId;
 }
