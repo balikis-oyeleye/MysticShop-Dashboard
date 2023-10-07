@@ -29,6 +29,9 @@ const AddProductModal = () => {
     setValue,
     watch,
     reset,
+    trigger,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
@@ -69,15 +72,27 @@ const AddProductModal = () => {
       return setStep((value) => value + 1);
     }
 
+    if (!data.image) {
+      setError("image", {
+        type: "custom",
+        message: "Please upload the product image",
+      });
+
+      return;
+    } else clearErrors("image");
+
+    setIsLoading(true);
+
     axios
       .post("/api/products", data)
       .then(() => {
-        toast.success("Listing created!");
+        toast.success("Product added!");
         router.refresh();
         close();
       })
       .catch(() => {
         toast.error("Something went wrong.");
+        close();
       })
       .finally(() => {
         setIsLoading(false);
@@ -121,6 +136,8 @@ const AddProductModal = () => {
           close={close}
           onChange={(value) => setCustomValue(value)}
           value={image}
+          isLoading={isLoading}
+          trigger={trigger}
         />
       )}
     </div>

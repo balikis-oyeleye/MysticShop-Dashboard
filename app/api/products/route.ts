@@ -10,8 +10,7 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-  const { category, imageUrl, description, name, price, quantity, status } =
-    body;
+  const { category, image, description, name, price, quantity, status } = body;
 
   Object.keys(body).forEach((value: any) => {
     if (!body[value]) {
@@ -26,7 +25,7 @@ export async function POST(request: Request) {
       price,
       quantity,
       status,
-      imageUrl,
+      imageUrl: image,
       sellerId: userId,
     },
   });

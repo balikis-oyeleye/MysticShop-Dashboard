@@ -1,3 +1,5 @@
+"use client";
+
 import { OrderProps, ProductProps, TransactionProps } from "@/types/general";
 import { Pencil, Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -16,16 +18,16 @@ const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
           {products.map((product, index) => (
             <tr className="border-b border-gray/50" key={product.id}>
               <td> {index + 1} </td>
-              <td className="flex items-center justify-center gap-3 py-4 px-6">
+              <td className="flex items-center justify-start gap-3 py-4 px-6">
                 <Image
-                  src={product.img}
+                  src={product.imageUrl}
                   alt={product.name}
                   width={40}
                   height={40}
                 />
                 <span className="whitespace-nowrap">{product.name}</span>
               </td>
-              <td>{product.category}</td>
+              <td className="capitalize">{product.category}</td>
               <td>{product.price}</td>
               <td>{product.quantity}</td>
               <td

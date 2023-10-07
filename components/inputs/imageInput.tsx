@@ -10,6 +10,7 @@ import Image from "next/image";
 interface ImageInputProps extends InputProps {
   onChange: (value: string) => void;
   value: string | undefined;
+  isLoading: boolean;
 }
 
 const ImageInput = ({
@@ -20,7 +21,8 @@ const ImageInput = ({
   close,
   onChange,
   value,
-  register,
+  isLoading,
+  errors,
 }: ImageInputProps) => {
   const handleImageUpload = useCallback(
     (result: any) => {
@@ -29,8 +31,6 @@ const ImageInput = ({
     },
     [onChange]
   );
-
-  console.log(value);
 
   return (
     <div className="bg-white sm:max-h-[40rem] sm:w-[30rem] p-6 rounded w-72">
@@ -54,19 +54,14 @@ const ImageInput = ({
               <CldUploadWidget
                 uploadPreset="nncydfmv"
                 onUpload={handleImageUpload}
-                {...register("image")}
                 options={{
                   maxFiles: 1,
                   maxFileSize: 2000000,
                 }}
               >
                 {({ open }) => {
-                  function handleOnClick(e: any) {
-                    e.preventDefault();
-                    open?.();
-                  }
                   return (
-                    <button className="button" onClick={handleOnClick}>
+                    <button className="button" onClick={() => open?.()}>
                       Upload an Image
                     </button>
                   );
@@ -74,16 +69,26 @@ const ImageInput = ({
               </CldUploadWidget>
             )}
           </div>
+
           <span className="text-xs text-gray">
             Please upload a valid image file. Size of image should not be more
             than 2MB
           </span>
+          {errors.image && (
+            <small className="error block">{errors.image?.message}</small>
+          )}
         </div>
         <div className="mt-4 space-x-4 text-end">
           {primaryButton && (
             <Button onClick={primaryButtonAction}>{primaryButton}</Button>
           )}
-          <Button onClick={secondaryButtonAction}>{secondaryButton}</Button>
+          <Button
+            disabled={isLoading}
+            className={isLoading ? "cursor-not-allowed" : ""}
+            onClick={secondaryButtonAction}
+          >
+            {secondaryButton}
+          </Button>
         </div>
       </div>
     </div>
