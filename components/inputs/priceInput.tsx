@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../modals/modal";
 import { InputProps } from "@/types/general";
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
