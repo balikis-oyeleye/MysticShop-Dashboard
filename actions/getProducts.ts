@@ -6,13 +6,7 @@ export const getProducts = async () => {
     const { userId } = auth();
     if (!userId) return [];
 
-    const products = await prisma.product.findMany({
-      where: {
-        sellerId: {
-          equals: userId,
-        },
-      },
-    });
+    const products = await prisma.product.findMany();
 
     return products;
   } catch (error: any) {
