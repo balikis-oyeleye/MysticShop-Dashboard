@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
+import useQuery from "@/hooks/useProductQuery";
 
 interface DropdownProps {
   items: string[];
@@ -16,8 +17,14 @@ const Dropdown = ({ items, className, name, page }: DropdownProps) => {
 
   const handleClick = useCallback(
     (item: string) => {
+      let currentQuery = {};
+      if (params) {
+        currentQuery = queryString.parse(params.toString());
+      }
+
       const updatedQuery: any = {
-        [name]: item,
+        ...currentQuery,
+        category: item,
       };
 
       if (item === "all" || filter === item) {
@@ -34,7 +41,7 @@ const Dropdown = ({ items, className, name, page }: DropdownProps) => {
 
       router.push(url);
     },
-    [router, params, filter]
+    [items, router, params, filter]
   );
 
   return (

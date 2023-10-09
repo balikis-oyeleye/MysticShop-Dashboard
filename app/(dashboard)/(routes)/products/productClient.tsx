@@ -8,6 +8,10 @@ import { productHeadings, productsFilters } from "@/constants/constants";
 import useProductModal from "@/hooks/useProductModal";
 import { ProductsProps } from "@/types/general";
 
+interface ProductClientProps extends ProductsProps {
+  params: any;
+}
+
 // const products = [
 //   {
 //     id: 0,
@@ -101,8 +105,9 @@ import { ProductsProps } from "@/types/general";
 //   },
 // ];
 
-const ProductClient = ({ products }: ProductsProps) => {
+const ProductClient = ({ products, params }: ProductClientProps) => {
   const openModal = useProductModal((state) => state.onOpen);
+  console.log(params);
 
   return (
     <main className="mt-6 pb-6 mx-6 overflow-x-auto">
