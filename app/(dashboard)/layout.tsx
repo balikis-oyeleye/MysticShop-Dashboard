@@ -1,3 +1,5 @@
+"use client";
+
 import { LayoutProps } from "@/types/general";
 import { useState } from "react";
 import Navbar from "@/components/navbar";
