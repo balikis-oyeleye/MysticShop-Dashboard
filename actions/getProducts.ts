@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 
-export const getProducts = async () => {
+export const getProducts = async (params: any) => {
   try {
     const { userId } = auth();
     if (!userId) return [];

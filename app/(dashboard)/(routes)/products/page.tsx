@@ -1,10 +1,9 @@
 import { getProducts } from "@/actions/getProducts";
 import ProductClient from "./productClient";
 
-const Products = async ({ params }: any) => {
-  const products = await getProducts();
+export default async function Products({ searchParams }: any) {
+  const products = await getProducts(searchParams);
+  console.log(searchParams);
 
-  return <ProductClient products={products} params={params} />;
-};
-
-export default Products;
+  return <ProductClient products={products} />;
+}
