@@ -46,9 +46,9 @@ const TableBody = ({
                   onCheckedChange={() => onUpdateProduct?.(product)}
                 />
               </td>
-              <td className="px-6">
+              <td>
                 <Trash2
-                  className="text-red-600 cursor-pointer"
+                  className="text-red-600 cursor-pointer mx-auto"
                   onClick={() => onDeleteProduct?.(product.id)}
                 />
               </td>
