@@ -65,6 +65,12 @@ export type ProductModalStore = {
   onClose: () => void;
 };
 
+export type UpdateProductModalStore = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+};
+
 export type QueryStore = {
   query: string | null;
   setQuery: (query: string | null) => void;
