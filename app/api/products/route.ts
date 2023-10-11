@@ -17,6 +17,7 @@ export async function POST(request: Request) {
       NextResponse.error();
     }
   });
+
   const product = await prisma.product.create({
     data: {
       category,
