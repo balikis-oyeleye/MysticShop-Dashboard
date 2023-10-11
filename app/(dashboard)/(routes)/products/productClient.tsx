@@ -6,105 +6,45 @@ import TableHead from "@/components/tableHead";
 import { Button } from "@/components/ui/button";
 import { productHeadings, productsFilters } from "@/constants/constants";
 import useProductModal from "@/hooks/useProductModal";
-import { ProductsProps } from "@/types/general";
+import { ProductProps, ProductsProps } from "@/types/general";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
+import toast from "react-hot-toast";
 
 interface ProductClientProps extends ProductsProps {}
 
-// const products = [
-//   {
-//     id: 0,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "unavailable",
-//   },
-//   {
-//     id: 1,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 2,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 3,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 4,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 5,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 6,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 7,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 8,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-//   {
-//     id: 9,
-//     img: "/img.webp",
-//     name: "Wall Mirror",
-//     category: "Decor",
-//     price: 9000,
-//     quantity: 18,
-//     status: "available",
-//   },
-// ];
-
 const ProductClient = ({ products }: ProductClientProps) => {
   const openModal = useProductModal((state) => state.onOpen);
+  const router = useRouter();
+
+  const onDelete = useCallback((id: string) => {
+    axios
+      .delete(`/api/products/${id}`)
+      .then(() => {
+        toast.success("Product deleted");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {});
+  }, []);
+
+  const onUpdate = useCallback((product: ProductProps) => {
+    console.log(product.id, product.status);
+
+    axios
+      .post(`/api/status/${product.id}`, product)
+      .then(() => {
+        toast.success("Status Changed!");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {});
+  }, []);
 
   return (
     <main className="mt-6 pb-6 mx-6 overflow-x-auto">
@@ -131,7 +71,11 @@ const ProductClient = ({ products }: ProductClientProps) => {
         <>
           <table className="mt-16 mb-6 min-w-full text-center text-sm font-light">
             <TableHead headings={productHeadings} />
-            <TableBody products={products} />
+            <TableBody
+              products={products}
+              onDeleteProduct={onDelete}
+              onUpdateProduct={onUpdate}
+            />
           </table>
           <div className="flex items-center justify-between flex-col sm:flex-row gap-y-5">
             <p>

@@ -3,14 +3,23 @@
 import { OrderProps, ProductProps, TransactionProps } from "@/types/general";
 import { Pencil, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { Switch } from "./ui/switch";
 
 interface TableBodyProps {
   products?: ProductProps[];
   orders?: OrderProps[];
   transactions?: TransactionProps[];
+  onDeleteProduct?: (id: string) => void;
+  onUpdateProduct?: (product: ProductProps) => void;
 }
 
-const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
+const TableBody = ({
+  products,
+  orders,
+  transactions,
+  onDeleteProduct,
+  onUpdateProduct,
+}: TableBodyProps) => {
   return (
     <tbody>
       {products ? (
@@ -22,26 +31,26 @@ const TableBody = ({ products, orders, transactions }: TableBodyProps) => {
                 <Image
                   src={product.imageUrl}
                   alt={product.name}
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
+                  className="h-auto w-auto"
                 />
                 <span className="whitespace-nowrap">{product.name}</span>
               </td>
-              <td className="capitalize">{product.category}</td>
+              <td className="capitalize px-2">{product.category}</td>
               <td>{product.price}</td>
               <td>{product.quantity}</td>
-              <td
-                className={`${
-                  product.status === "available"
-                    ? "text-green-600"
-                    : "text-red-700"
-                }`}
-              >
-                {product.status}
+              <td>
+                <Switch
+                  checked={product.status === "available"}
+                  onCheckedChange={() => onUpdateProduct?.(product)}
+                />
               </td>
-              <td className="flex items-center gap-4 px-6 py-4 justify-center">
-                <Pencil className="text-blue cursor-pointer" />
-                <Trash2 className="text-red-600 cursor-pointer" />
+              <td className="px-6">
+                <Trash2
+                  className="text-red-600 cursor-pointer"
+                  onClick={() => onDeleteProduct?.(product.id)}
+                />
               </td>
             </tr>
           ))}

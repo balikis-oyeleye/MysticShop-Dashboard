@@ -13,7 +13,6 @@ const Dropdown = ({ items, className, name, page }: DropdownProps) => {
   const router = useRouter();
   const params = useSearchParams();
   const filter = params?.get(name);
-  console.log(filter);
 
   const handleClick = useCallback(
     (item: string) => {
