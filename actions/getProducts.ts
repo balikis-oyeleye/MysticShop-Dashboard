@@ -6,14 +6,29 @@ export const getProducts = async (params: any) => {
     const { userId } = auth();
     if (!userId) return [];
 
-    let filter = {
+    let filter: any = {
       sellerId: {
         equals: userId,
       },
     };
 
+    if (params.category) {
+      filter.category = {
+        equals: params.category,
+      };
+    }
+
+    if (params.status) {
+      filter.status = {
+        equals: params.status,
+      };
+    }
+
     const products = await prisma.product.findMany({
       where: filter,
+      orderBy: {
+        price: params.price === "highest" ? "desc" : "asc",
+      },
     });
 
     return products;

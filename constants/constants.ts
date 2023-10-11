@@ -3,8 +3,7 @@ export const ordersFilters = [
     name: "category",
     filters: ["furniture", "clocks", "beddings", "lighting", "accessories"],
   },
-  { name: "status", filters: ["cancel", "shipped", "pending", "completed"] },
-  { name: "price", filters: ["highest", "lowest"] },
+  { name: "date", filters: ["latest", "oldest"] },
 ];
 
 export const ordersHeadings = [
