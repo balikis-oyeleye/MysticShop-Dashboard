@@ -77,7 +77,7 @@ const ProductClient = ({ products }: ProductClientProps) => {
               onUpdateProduct={onUpdate}
             />
           </table>
-          <div className="flex items-center justify-between flex-col sm:flex-row gap-y-5">
+          <div className="flex md:items-center justify-between flex-col sm:flex-row gap-y-5">
             <p>
               Showing 1 to {products.length} of {products.length} entries
             </p>

@@ -111,7 +111,7 @@ const OrderClient = ({ params }: any) => {
         <TableBody orders={orders} />
       </table>
 
-      <div className="flex items-center justify-between flex-col sm:flex-row gap-y-5">
+      <div className="flex md:items-center justify-between flex-col sm:flex-row gap-y-5">
         <p>Showing 1 to 10 of 100 entries</p>
         <div className="space-x-4">
           <Button className="bg-blue hover:bg-blueHoover text-white ">
