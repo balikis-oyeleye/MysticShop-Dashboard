@@ -1,46 +1,20 @@
 import Box from "@/components/box";
 import Client from "@/components/client";
-import React from "react";
-
-const orders = [
-  { period: "today", orders: 2 },
-  { period: "this week", orders: 30 },
-  { period: "this month", orders: 500 },
-];
-
-const revenues = [
-  { period: "today", amount: 8590 },
-  { period: "this week", amount: 23900 },
-  { period: "this month", amount: 100000 },
-];
 
 const Overview = () => {
+  const orders = [
+    { name: "Revenue", amount: 340000 },
+    { name: "Customer", amount: 2000 },
+    { name: "Orders", amount: 2000 },
+    { name: "Products", amount: 2000 },
+  ];
   return (
     <Client>
-      <main className="flex md:block flex-col items-center justify-center md:pl-6 mt-6 space-y-12">
-        <div>
-          <h3 className="font-bold mb-4">Orders</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4">
-            {orders.map((order) => (
-              <Box
-                period={order.period}
-                orders={order.orders}
-                key={order.period}
-              />
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 className="font-bold mb-4">Revenue</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4">
-            {revenues.map((revenue) => (
-              <Box
-                period={revenue.period}
-                amount={revenue.amount}
-                key={revenue.period}
-              />
-            ))}
-          </div>
+      <main className="flex md:block flex-col md:px-0 md:items-center justify-center md:pl-6 mt-6 w-full px-9">
+        <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-y-4 w-full">
+          {orders.map((order) => (
+            <Box name={order.name} amount={order.amount} key={order.name} />
+          ))}
         </div>
       </main>
     </Client>
