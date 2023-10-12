@@ -1,5 +1,6 @@
 "use client";
 
+import Client from "@/components/client";
 import TableBody from "@/components/tableBody";
 import TableHead from "@/components/tableHead";
 import { Button } from "@/components/ui/button";
@@ -40,18 +41,20 @@ const transactions = [
 
 const Transactions = () => {
   return (
-    <main className="mt-6 pb-6 mx-6 overflow-x-auto">
-      <div className="flex items-start justify-between mb-14 flex-col gap-3">
-        <h2 className="font-bold text-3xl">
-          Balance: {USDollar.format(50000)}
-        </h2>
-        <Button className="bg-blue hover:bg-blueHoover w-36">Withdraw</Button>
-      </div>
-      <table className="mt-16 mb-6 min-w-full text-center text-sm font-light">
-        <TableHead headings={transactionHeadings} />
-        <TableBody transactions={transactions} />
-      </table>
-    </main>
+    <Client>
+      <main className="mt-6 pb-6 mx-6 overflow-x-auto">
+        <div className="flex items-start justify-between mb-14 flex-col gap-3">
+          <h2 className="font-bold text-3xl">
+            Balance: {USDollar.format(50000)}
+          </h2>
+          <Button className="bg-blue hover:bg-blueHoover w-36">Withdraw</Button>
+        </div>
+        <table className="mt-16 mb-6 min-w-full text-center text-sm font-light">
+          <TableHead headings={transactionHeadings} />
+          <TableBody transactions={transactions} />
+        </table>
+      </main>
+    </Client>
   );
 };
 

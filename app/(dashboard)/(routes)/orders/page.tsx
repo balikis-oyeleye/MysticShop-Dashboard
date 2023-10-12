@@ -1,7 +1,12 @@
+import Client from "@/components/client";
 import OrderClient from "./orderClient";
 
 const Orders = ({ params }: any) => {
-  return <OrderClient params={params} />;
+  return (
+    <Client>
+      <OrderClient params={params} />
+    </Client>
+  );
 };
 
 export default Orders;
