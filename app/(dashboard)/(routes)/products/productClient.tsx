@@ -7,19 +7,14 @@ import { Button } from "@/components/ui/button";
 import { productHeadings, productsFilters } from "@/constants/constants";
 import useProductModal from "@/hooks/useProductModal";
 import { ProductProps, ProductsProps } from "@/types/general";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
-import queryString from "query-string";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-interface ProductClientProps extends ProductsProps {}
-
-const ProductClient = ({ products }: ProductClientProps) => {
-  const [page, setPage] = useState(0);
+const ProductClient = ({ products }: ProductsProps) => {
   const openModal = useProductModal((state) => state.onOpen);
   const router = useRouter();
-  const params = useSearchParams();
 
   const onDelete = useCallback((id: string) => {
     axios
