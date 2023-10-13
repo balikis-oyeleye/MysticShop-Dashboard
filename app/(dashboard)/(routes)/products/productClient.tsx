@@ -7,16 +7,19 @@ import { Button } from "@/components/ui/button";
 import { productHeadings, productsFilters } from "@/constants/constants";
 import useProductModal from "@/hooks/useProductModal";
 import { ProductProps, ProductsProps } from "@/types/general";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useState } from "react";
+import queryString from "query-string";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
 import toast from "react-hot-toast";
 
 interface ProductClientProps extends ProductsProps {}
 
 const ProductClient = ({ products }: ProductClientProps) => {
+  const [page, setPage] = useState(0);
   const openModal = useProductModal((state) => state.onOpen);
   const router = useRouter();
+  const params = useSearchParams();
 
   const onDelete = useCallback((id: string) => {
     axios
@@ -81,14 +84,6 @@ const ProductClient = ({ products }: ProductClientProps) => {
             <p>
               Showing 1 to {products.length} of {products.length} entries
             </p>
-            <div className="space-x-4">
-              <Button className="bg-blue hover:bg-blueHoover text-white ">
-                Previous
-              </Button>
-              <Button className="bg-blue hover:bg-blueHoover text-white ">
-                Next
-              </Button>
-            </div>
           </div>
         </>
       ) : (
