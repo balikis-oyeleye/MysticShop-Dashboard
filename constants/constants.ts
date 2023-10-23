@@ -1,3 +1,5 @@
+import { Archive, LayoutGrid, ShoppingBag } from "lucide-react";
+
 export const ordersFilters = [
   {
     name: "category",
@@ -34,10 +36,8 @@ export const productHeadings = [
   "Actions",
 ];
 
-export const transactionHeadings = [
-  "Transaction Time",
-  "Transaction Date",
-  "Transaction ID",
-  "Transaction Detail",
-  "Amount",
+export const routes = [
+  { label: "Overview", icon: LayoutGrid, to: "/" },
+  { label: "Products", icon: Archive, to: "/products" },
+  { label: "Orders", icon: ShoppingBag, to: "/orders" },
 ];

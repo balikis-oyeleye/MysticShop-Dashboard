@@ -1,24 +1,10 @@
 "use client";
-import {
-  Gem,
-  LayoutGrid,
-  Archive,
-  ShoppingBag,
-  Contact2,
-  LogOut,
-  X,
-} from "lucide-react";
+import { Gem, LogOut, X } from "lucide-react";
 import Link from "next/link";
 import { SignOutButton } from "@clerk/nextjs";
 import { SidebarProps } from "@/types/general";
 import { usePathname } from "next/navigation";
-
-const routes = [
-  { label: "Overview", icon: LayoutGrid, to: "/" },
-  { label: "Products", icon: Archive, to: "/products" },
-  { label: "Orders", icon: ShoppingBag, to: "/orders" },
-  { label: "Profile", icon: Contact2, to: "/profile" },
-];
+import { routes } from "@/constants/constants";
 
 const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
   const pathname = usePathname();
