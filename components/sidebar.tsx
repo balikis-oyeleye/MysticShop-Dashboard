@@ -4,7 +4,7 @@ import {
   LayoutGrid,
   Archive,
   ShoppingBag,
-  Boxes,
+  Contact2,
   LogOut,
   X,
 } from "lucide-react";
@@ -17,7 +17,7 @@ const routes = [
   { label: "Overview", icon: LayoutGrid, to: "/" },
   { label: "Products", icon: Archive, to: "/products" },
   { label: "Orders", icon: ShoppingBag, to: "/orders" },
-  { label: "Transactions", icon: Boxes, to: "/transactions" },
+  { label: "Profile", icon: Contact2, to: "/profile" },
 ];
 
 const Sidebar = ({ openSidebar, setOpenSidebar }: SidebarProps) => {
