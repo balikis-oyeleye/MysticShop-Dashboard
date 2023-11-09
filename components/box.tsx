@@ -19,7 +19,7 @@ const Box = ({ name, amount, icon: Icon }: BoxProps) => {
         </div>
       </div>
       <p className="text-gray text-sm font-semibold">
-        {amount ? USDollar.format(amount!) : 0}
+        {name === "Revenue" ? USDollar.format(amount!) : amount}
       </p>
     </div>
   );

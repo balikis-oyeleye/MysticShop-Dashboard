@@ -14,7 +14,6 @@ const ConfirmDelete = () => {
   const closeModal = useConfirmDeleteModal((state) => state.onClose);
   const router = useRouter();
 
-  console.log(productId);
 
   const onDelete = useCallback((id: string) => {
     setLoading(true);

@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 
-export const getProducts = async (params: any) => {
+export const getProducts = async (params?: any) => {
   try {
     const { userId } = auth();
     if (!userId) return [];
@@ -12,22 +12,24 @@ export const getProducts = async (params: any) => {
       },
     };
 
-    if (params.category) {
-      filter.category = {
-        equals: params.category,
-      };
-    }
+    if (params) {
+      if (params.category) {
+        filter.category = {
+          equals: params.category,
+        };
+      }
 
-    if (params.status) {
-      filter.status = {
-        equals: params.status,
-      };
+      if (params.status) {
+        filter.status = {
+          equals: params.status,
+        };
+      }
     }
 
     const products = await prisma.product.findMany({
       where: filter,
       orderBy: {
-        price: params.price === "highest" ? "desc" : "asc",
+        price: params && params.price === "highest" ? "desc" : "asc",
       },
     });
 
