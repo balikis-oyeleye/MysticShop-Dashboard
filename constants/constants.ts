@@ -5,12 +5,11 @@ export const ordersFilters = [
     name: "category",
     filters: ["furniture", "clocks", "beddings", "lighting", "accessories"],
   },
-  { name: "date", filters: ["latest", "oldest"] },
 ];
 
 export const ordersHeadings = [
   "#",
-  "Order Id",
+  "Category",
   "Order Name",
   "Address",
   "Date",

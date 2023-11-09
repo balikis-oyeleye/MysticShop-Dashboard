@@ -28,12 +28,24 @@ export type ProductsProps = {
 };
 
 export type OrderProps = {
-  orderId: string;
-  img: string;
-  name: string;
+  id: string;
+  orderDate: Date;
+  updatedAt: Date;
   address: string;
-  date: string;
-  amount: number;
+  sellerId: string;
+  productId: string;
+  totalAmount: number;
+  Product: {
+    id: string;
+    name: string;
+    category: string;
+    description: string;
+    price: number;
+    quantity: number;
+    status: string;
+    imageUrl: string;
+    sellerId: string;
+  };
 };
 
 export type OrdersProps = {
@@ -63,6 +75,14 @@ export type ProductModalStore = {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+};
+
+export type confirmDeleteModalStore = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  productId: string;
+  setProductId: (id: string) => void;
 };
 
 export type UpdateProductModalStore = {

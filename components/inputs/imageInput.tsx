@@ -27,7 +27,6 @@ const ImageInput = ({
   const handleImageUpload = useCallback(
     (result: any) => {
       onChange(result.info.secure_url);
-      console.log(result.info.secure_url);
     },
     [onChange]
   );

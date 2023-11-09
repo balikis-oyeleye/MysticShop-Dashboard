@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import AddProductModal from "@/components/modals/addProductModal";
 import Sidebar from "@/components/sidebar";
 import Client from "@/components/client";
+import ConfirmDelete from "@/components/modals/confirmDelete";
 
 const DashboardLayout = ({ children }: LayoutProps) => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -27,6 +28,7 @@ const DashboardLayout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <AddProductModal />
+      <ConfirmDelete />
     </div>
   );
 };

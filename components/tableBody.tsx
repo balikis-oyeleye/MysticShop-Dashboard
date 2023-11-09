@@ -1,7 +1,7 @@
 "use client";
 
 import { OrderProps, ProductProps, TransactionProps } from "@/types/general";
-import { Pencil, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import { Switch } from "./ui/switch";
 
@@ -58,21 +58,23 @@ const TableBody = ({
       ) : orders ? (
         <>
           {orders?.map((order, index) => (
-            <tr className="border-b border-gray/50" key={order.orderId}>
+            <tr className="border-b border-gray/50" key={order.id}>
               <td> {index + 1} </td>
-              <td>{order.orderId}</td>
+              <td className="capitalize">{order.Product.category}</td>
               <td className="flex items-center justify-center gap-3 py-4 px-6">
                 <Image
-                  src={order.img}
-                  alt={order.name}
+                  src={order.Product?.imageUrl!}
+                  alt={order.Product?.name!}
                   width={40}
                   height={40}
                 />
-                <span className="whitespace-nowrap">{order.name}</span>
+                <span className="whitespace-nowrap">{order.Product?.name}</span>
               </td>
               <td className="whitespace-nowrap px-4">{order.address}</td>
-              <td>{order.date}</td>
-              <td>{order.amount}</td>
+              <td className="whitespace-nowrap px-4">
+                {order.orderDate.toDateString()}
+              </td>
+              <td>{order.totalAmount}</td>
             </tr>
           ))}
         </>

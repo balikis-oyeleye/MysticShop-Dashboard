@@ -1,10 +1,14 @@
 import Client from "@/components/client";
 import OrderClient from "./orderClient";
+import { getOrders } from "@/actions/getOrders";
+import { OrderProps } from "@/types/general";
 
-const Orders = ({ params }: any) => {
+const Orders = async ({ searchParams }: any) => {
+  const orders = (await getOrders(searchParams)) as OrderProps[];
+
   return (
     <Client>
-      <OrderClient params={params} />
+      <OrderClient orders={orders} />
     </Client>
   );
 };

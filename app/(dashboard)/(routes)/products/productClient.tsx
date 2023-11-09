@@ -11,27 +11,20 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useConfirmDeleteModal from "@/hooks/confirmDeleteModal";
 
 const ProductClient = ({ products }: ProductsProps) => {
   const openModal = useProductModal((state) => state.onOpen);
+  const openModal2 = useConfirmDeleteModal((state) => state.onOpen);
+  const setProductId = useConfirmDeleteModal((state) => state.setProductId);
   const router = useRouter();
 
   const onDelete = useCallback((id: string) => {
-    axios
-      .delete(`/api/products/${id}`)
-      .then(() => {
-        toast.success("Product deleted");
-        router.refresh();
-      })
-      .catch(() => {
-        toast.error("Something went wrong.");
-      })
-      .finally(() => {});
+    setProductId(id);
+    openModal2();
   }, []);
 
   const onUpdate = useCallback((product: ProductProps) => {
-    console.log(product.id, product.status);
-
     axios
       .post(`/api/status/${product.id}`, product)
       .then(() => {
@@ -65,7 +58,11 @@ const ProductClient = ({ products }: ProductsProps) => {
         </Button>
       </div>
 
-      {products.length != 0 || !products ? (
+      {!products || products.length === 0 ? (
+        <div className="flex items-center justify-center mt-48">
+          <p className="text-3xl font-bold">No Products</p>
+        </div>
+      ) : (
         <>
           <table className="mt-16 mb-6 min-w-full text-center text-sm font-light">
             <TableHead headings={productHeadings} />
@@ -75,16 +72,7 @@ const ProductClient = ({ products }: ProductsProps) => {
               onUpdateProduct={onUpdate}
             />
           </table>
-          <div className="flex md:items-center justify-between flex-col sm:flex-row gap-y-5">
-            <p>
-              Showing 1 to {products.length} of {products.length} entries
-            </p>
-          </div>
         </>
-      ) : (
-        <div className="flex items-center justify-center mt-48">
-          <p className="text-3xl font-bold">No Products</p>
-        </div>
       )}
     </main>
   );
