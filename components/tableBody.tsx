@@ -60,13 +60,16 @@ const TableBody = ({
           {orders?.map((order, index) => (
             <tr className="border-b border-gray/50" key={order.id}>
               <td> {index + 1} </td>
-              <td className="capitalize">{order.Product.category}</td>
-              <td className="flex items-center justify-center gap-3 py-4 px-6">
+              <td className="capitalize text-start">
+                {order.Product.category}
+              </td>
+              <td className="flex items-center justify-start gap-3 py-4 px-6">
                 <Image
                   src={order.Product?.imageUrl!}
                   alt={order.Product?.name!}
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
+                  className="h-auto w-auto"
                 />
                 <span className="whitespace-nowrap">{order.Product?.name}</span>
               </td>

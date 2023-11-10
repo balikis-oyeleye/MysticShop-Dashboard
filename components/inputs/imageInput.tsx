@@ -55,17 +55,19 @@ const ImageInput = ({
                 onUpload={handleImageUpload}
                 options={{
                   maxFiles: 1,
-                  maxFileSize: 2000000,
+                  maxFileSize: 3000000,
                 }}
               >
                 {({ open }) => {
                   return (
                     <button
-                      disabled={!open}
+                      disabled={typeof open === undefined}
                       className="button"
                       onClick={() => open?.()}
                     >
-                      {!open ? "Loading..." : "Upload an Image"}
+                      {typeof open === undefined
+                        ? "Loading..."
+                        : "Upload an Image"}
                     </button>
                   );
                 }}

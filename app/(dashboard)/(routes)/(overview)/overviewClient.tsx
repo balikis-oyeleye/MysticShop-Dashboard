@@ -2,6 +2,7 @@
 
 import Box from "@/components/box";
 import Chart from "@/components/chart";
+import { graphData } from "@/types/general";
 import { DollarSign, Package, ShoppingBag, User } from "lucide-react";
 
 interface OverviewClientProps {
@@ -9,6 +10,7 @@ interface OverviewClientProps {
   order: number;
   revenue: number;
   customers: number;
+  data: graphData;
 }
 
 const OverviewClient = ({
@@ -16,6 +18,7 @@ const OverviewClient = ({
   order,
   revenue,
   customers,
+  data,
 }: OverviewClientProps) => {
   const orders = [
     { name: "Revenue", amount: revenue, icon: DollarSign },
@@ -37,7 +40,7 @@ const OverviewClient = ({
         ))}
       </div>
       <div className="mt-20 w-full relative">
-        <Chart />
+        <Chart data={data} />
       </div>
     </main>
   );

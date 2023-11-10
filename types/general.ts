@@ -95,3 +95,8 @@ export type QueryStore = {
   query: string | null;
   setQuery: (query: string | null) => void;
 };
+
+export type graphData = {
+  name: string;
+  total: number;
+}[];
