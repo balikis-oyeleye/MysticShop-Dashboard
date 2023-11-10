@@ -11,8 +11,6 @@ const Overview = async () => {
 
   const revenue = orders?.reduce((sum, item) => sum + item.totalAmount, 0);
 
-  console.log(customers);
-
   return (
     <Client>
       <OverviewClient

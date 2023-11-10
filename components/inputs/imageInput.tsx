@@ -60,8 +60,12 @@ const ImageInput = ({
               >
                 {({ open }) => {
                   return (
-                    <button className="button" onClick={() => open?.()}>
-                      Upload an Image
+                    <button
+                      disabled={!open}
+                      className="button"
+                      onClick={() => open?.()}
+                    >
+                      {!open ? "Loading..." : "Upload an Image"}
                     </button>
                   );
                 }}
