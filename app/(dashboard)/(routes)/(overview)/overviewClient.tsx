@@ -8,12 +8,18 @@ interface OverviewClientProps {
   product: number;
   order: number;
   revenue: number;
+  customers: number;
 }
 
-const OverviewClient = ({ product, order, revenue }: OverviewClientProps) => {
+const OverviewClient = ({
+  product,
+  order,
+  revenue,
+  customers,
+}: OverviewClientProps) => {
   const orders = [
     { name: "Revenue", amount: revenue, icon: DollarSign },
-    { name: "Customer", amount: 2000, icon: User },
+    { name: "Customer", amount: customers, icon: User },
     { name: "Orders", amount: order, icon: ShoppingBag },
     { name: "Products", amount: product, icon: Package },
   ];

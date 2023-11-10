@@ -2,18 +2,16 @@ import Client from "@/components/client";
 import OverviewClient from "./overviewClient";
 import { getProducts } from "@/actions/getProducts";
 import { getOrders } from "@/actions/getOrders";
+import { getCustomers } from "@/actions/getCustomer";
 
 const Overview = async () => {
   const product = await getProducts();
   const orders = await getOrders();
+  const customers = await getCustomers();
 
   const revenue = orders?.reduce((sum, item) => sum + item.totalAmount, 0);
-  // const totalCustomer = orders?.reduce((acc, order) =>{
 
-  // } ,[])
-
-  console.log(product);
-  console.log(orders);
+  console.log(customers);
 
   return (
     <Client>
@@ -21,6 +19,7 @@ const Overview = async () => {
         product={product?.length || 0}
         order={orders?.length || 0}
         revenue={revenue || 0}
+        customers={customers?.length || 0}
       />
     </Client>
   );

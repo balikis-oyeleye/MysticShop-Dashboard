@@ -10,6 +10,9 @@ export const getOrders = async (params?: any) => {
       sellerId: {
         equals: userId,
       },
+      isPaid: {
+        equals: true,
+      },
     };
 
     if (params) {
