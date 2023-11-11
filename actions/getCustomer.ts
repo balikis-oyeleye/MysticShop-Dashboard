@@ -10,6 +10,9 @@ export const getCustomers = async (params?: any) => {
       by: ["custormerId"],
       where: {
         isPaid: { equals: true },
+        sellerId: {
+        equals: userId,
+      },
       },
     });
     return customers;
