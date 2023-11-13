@@ -17,7 +17,6 @@ export type ProductProps = {
   name: string;
   category: string;
   price: number;
-  quantity: number;
   status: string;
   description?: string;
   sellerId?: string;
@@ -41,7 +40,6 @@ export type OrderProps = {
     category: string;
     description: string;
     price: number;
-    quantity: number;
     status: string;
     imageUrl: string;
     sellerId: string;

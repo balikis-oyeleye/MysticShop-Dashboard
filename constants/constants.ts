@@ -30,7 +30,6 @@ export const productHeadings = [
   "Product Name",
   "Category",
   "Price",
-  "Quantity",
   "Status",
   "Actions",
 ];

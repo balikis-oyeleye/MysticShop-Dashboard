@@ -34,20 +34,6 @@ const PriceInput = ({
           />
         </label>
 
-        <label className="flex flex-col">
-          <span>Product Quantity</span>
-          <input
-            className="border-blue border rounded-sm px-2 py-1"
-            type="number"
-            defaultValue={1}
-            min={1}
-            placeholder="Enter Product Price"
-            {...register("quantity", {
-              setValueAs: (value) => Number(value),
-            })}
-          />
-        </label>
-
         <div>
           <h4>Product Available</h4>
           <div className="space-x-4">

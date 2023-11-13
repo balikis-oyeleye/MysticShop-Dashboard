@@ -39,7 +39,6 @@ const TableBody = ({
               </td>
               <td className="capitalize px-2">{product.category}</td>
               <td>{product.price}</td>
-              <td>{product.quantity}</td>
               <td>
                 <Switch
                   checked={product.status === "available"}

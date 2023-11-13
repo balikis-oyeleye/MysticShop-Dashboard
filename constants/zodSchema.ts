@@ -7,7 +7,6 @@ export const formSchema = z.object({
     .optional(),
   category: z.string(),
   price: z.number().optional(),
-  quantity: z.number().optional(),
   status: z.string().optional(),
   image: z.string().optional(),
   description: z
