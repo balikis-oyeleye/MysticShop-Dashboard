@@ -43,7 +43,6 @@ export const getGraphData = async () => {
       let revenueForOrder = order.totalAmount;
 
       monthlyRevenue[month] = (monthlyRevenue[month] || 0) + revenueForOrder;
-      console.log(monthlyRevenue);
     }
 
     for (const month in monthlyRevenue) {
