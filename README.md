@@ -14,7 +14,7 @@ The dashboard of an online decor marketplace where users can discover and purcha
 
 ### Preview
 
-![preview](public/site-img.jpg)
+![preview](public/web.png)
 
 ## Table of Contents
 
