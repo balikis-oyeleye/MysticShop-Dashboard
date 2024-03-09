@@ -1,5 +1,4 @@
 "use client";
-
 import { InputProps } from "@/types/general";
 import { CldUploadWidget } from "next-cloudinary";
 import { Button } from "../ui/button";
